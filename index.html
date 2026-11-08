@@ -58,15 +58,16 @@
 </head>
 <body>
   <header class="bar">
-    <h1>HomeEaseEssentials — design preview comparison<small>Previous version (v2) and revised version (v3) · sample data only · not a live store · no platform, payment or service approved</small></h1>
+    <h1>HomeEaseEssentials — design preview comparison<small>Latest version (v4) and earlier versions · sample data only · not a live store · no platform, payment or service approved</small></h1>
     <div class="actions">
-      <a id="open-actual" href="v3/a/index.html" target="_blank" rel="noopener">Open page at actual width ↗</a>
+      <a id="open-actual" href="v4/a/index.html" target="_blank" rel="noopener">Open page at actual width ↗</a>
       <button type="button" id="reset-cart">Reset sample carts</button>
     </div>
   </header>
   <nav class="links" aria-label="Version links">
     <span>Open a version on its own:</span>
-    <a href="v3/">Revised v3 (photos + typography)</a>
+    <a href="v4/">Latest v4 (scope-aligned homepage and product page)</a>
+    <a href="v3/">v3 (photos + typography)</a>
     <a href="v2/">Previous v2</a>
     <a href="v1/">First preview v1</a>
   </nav>
@@ -74,10 +75,11 @@
     <fieldset><legend>Version</legend><div class="seg">
       <label><input type="radio" name="ver" value="v1"><span>v1 first</span></label>
       <label><input type="radio" name="ver" value="v2"><span>v2 previous</span></label>
-      <label><input type="radio" name="ver" value="v3" checked><span>v3 revised</span></label></div></fieldset>
+      <label><input type="radio" name="ver" value="v3"><span>v3</span></label>
+      <label><input type="radio" name="ver" value="v4" checked><span>v4 latest</span></label></div></fieldset>
     <fieldset><legend>Layout</legend><div class="seg">
       <label><input type="radio" name="layout" value="single" checked><span>Single</span></label>
-      <label><input type="radio" name="layout" value="split"><span>v2 vs v3 side by side</span></label></div></fieldset>
+      <label><input type="radio" name="layout" value="split"><span>v3 vs v4 side by side</span></label></div></fieldset>
     <fieldset><legend>Direction</legend><div class="seg">
       <label><input type="radio" name="dir" value="a" checked><span>A · Warm Everyday</span></label>
       <label><input type="radio" name="dir" value="b"><span>B · Clear &amp; Practical</span></label></div></fieldset>
@@ -95,21 +97,39 @@
     <fieldset id="mode-set"><legend>Product availability (preview control)</legend><div class="seg">
       <label><input type="radio" name="mode" value="buy" checked><span>Ready to purchase</span></label>
       <label><input type="radio" name="mode" value="enquire"><span>Needs confirmation</span></label></div></fieldset>
+    <fieldset id="cats-set"><legend>Categories (configurable)</legend><div class="seg">
+      <label><input type="radio" name="cats" value="3"><span>3</span></label>
+      <label><input type="radio" name="cats" value="4" checked><span>4</span></label>
+      <label><input type="radio" name="cats" value="6"><span>6</span></label></div></fieldset>
+    <fieldset id="sticky-set"><legend>Phone buy bar (option to test)</legend><div class="seg">
+      <label><input type="radio" name="sticky" value="off" checked><span>Off</span></label>
+      <label><input type="radio" name="sticky" value="on"><span>On</span></label></div></fieldset>
   </div>
-  <p class="status"><b>Design preview only.</b> Sample products, prices and stock. v3 uses licensed stock photographs (Unsplash) as stand-ins for real product photos; v1 and v2 use drawn sample renders. WhatsApp actions show a message preview; checkout is outside this phase. Nothing is sent, charged or recorded.</p>
+  <p class="status"><b>Design preview only.</b> Sample products, prices and stock. v3 and v4 use licensed stock photographs (Unsplash) as stand-ins for real product photos; v1 and v2 use drawn sample renders. The category and buy-bar controls apply to v4 only. WhatsApp actions show a message preview; checkout is outside this phase. Nothing is sent, charged or recorded.</p>
 
   <main class="stage" id="stage"></main>
 
   <section class="notes" id="notes" hidden tabindex="-1" aria-label="What changed">
     <article>
-      <h2>What changed in v3 (revised) compared with v2 (previous)</h2>
+      <h2>What changed in v4 compared with v3</h2>
+      <p>Homepage and product page refined to match the approved sitemap and scope (8 Nov 2026). Layouts, photos, type and sample catalogue otherwise carry over from v3.</p>
+      <ul>
+        <li><b>Navigation from the sitemap:</b> A's header now reads Shop · Track your order · Help. "Shop" opens a menu listing every category, so the header no longer depends on how many categories there are. B adds Track order and Help to its header. Both mobile menus and footers gain Track your order.</li>
+        <li><b>Categories are configuration:</b> names, order and count come from one list (<code>shared/catalog.js</code>). Use the Categories control to see 3, 4 or 6. The homepage grid, menus and footer adapt without redesign. The two extra sample categories show collections that overlap: "Desk &amp; Study" (hand-picked) and "Under Rs 2,000" (price rule). All names are placeholders until the launch catalogue is confirmed.</li>
+        <li><b>Phone sticky buy bar is now optional:</b> off by default; switch it on with the Phone buy bar control to compare. It only appears on phones after the main Add to cart scrolls away.</li>
+        <li><b>Product page (A):</b> category label and a one-line spec under the title; a single-colour product no longer shows a one-option picker; the three COD lines became a short numbered "How cash on delivery works" box. B gets the same single-colour change.</li>
+        <li><b>Track your order and Help</b> open placeholder panels for now. Their wording avoids promising features that haven't been verified (for example, order lookup by phone number).</li>
+        <li><b>Header (A):</b> now opaque, so content no longer shows through it while scrolling.</li>
+      </ul>
+      <p><b>Not changed:</b> sample prices, stock, delivery and returns wording (still provisional), cart and WhatsApp previews. No checkout, payments or real orders.</p>
+      <h2 style="margin-top:28px">What changed in v3 compared with v2</h2>
       <ul>
         <li><b>Real photography:</b> drawn product renders replaced with licensed photographs (Unsplash License). The sample catalogue was rebuilt around the photos so each product's name, colour and visible features match what is shown. Gallery close-ups are crops of the same photograph, never a different product. Crops use a focal point per product so the item stays visible on phone and desktop.</li>
         <li><b>Typography:</b> Red Hat Display for headings and prices, Red Hat Text for body copy and controls, Red Hat Mono for Direction B's specifications. Tighter heading spacing, consistent sizes on desktop and mobile, and lining tabular figures so PKR prices line up.</li>
         <li><b>Catalogue changes (sample data):</b> 8 products matching available photos. The jewellery box is shown in one colour (Blush Pink) because both photos are of the same pink box; colour choice is demonstrated on the Cotton Bath Towel (White, Charcoal sold out), each colour shown as a crop of that towel.</li>
         <li><b>Unchanged:</b> layouts, cart, WhatsApp previews, availability modes and the v2 product-page improvements.</li>
       </ul>
-      <p>Photo credits: <a href="v3/shared/img/CREDITS.md" target="_blank" rel="noopener">v3/shared/img/CREDITS.md</a></p>
+      <p>Photo credits: <a href="v4/shared/img/CREDITS.md" target="_blank" rel="noopener">v3/shared/img/CREDITS.md</a></p>
     </article>
   </section>
 
@@ -117,22 +137,24 @@
 (function () {
   const $ = (s) => document.querySelector(s);
   const stage = $("#stage");
-  const LABEL = { v1: "v1 first", v2: "v2 previous", v3: "v3 revised" };
+  const LABEL = { v1: "v1 first", v2: "v2", v3: "v3", v4: "v4 latest" };
   const HEIGHT = { 1440: 900, 1024: 768, 768: 1024, 390: 844, 360: 760 };
-  const state = { ver: "v3", layout: "single", dir: "a", page: "index", size: "1440", mode: "buy" };
+  const state = { ver: "v4", layout: "single", dir: "a", page: "index", size: "1440", mode: "buy", cats: "4", sticky: "off" };
   try { Object.assign(state, JSON.parse(decodeURIComponent(location.hash.slice(1)) || "{}")); } catch (e) {}
-  if (!LABEL[state.ver]) state.ver = "v3";
+  if (!LABEL[state.ver]) state.ver = "v4";
   document.querySelectorAll("input[type=radio]").forEach((i) => { if (state[i.name] === i.value) i.checked = true; });
 
   function url(ver, framed) {
     const q = new URLSearchParams();
     if (state.page === "product" && state.mode === "enquire") q.set("mode", "enquire");
+    if (ver === "v4" && state.cats !== "4") q.set("cats", state.cats);
+    if (ver === "v4" && state.page === "product" && state.sticky === "on") q.set("sticky", "1");
     if (framed) q.set("frame", "1");
     const s = q.toString();
     return ver + "/" + state.dir + "/" + state.page + ".html" + (s ? "?" + s : "");
   }
   function frameHTML(ver) {
-    return '<div class="frame-wrap"><p class="vlabel"><span class="' + (ver === "v3" ? "" : "prev") + '">' + LABEL[ver] + '</span></p>' +
+    return '<div class="frame-wrap"><p class="vlabel"><span class="' + (ver === "v4" ? "" : "prev") + '">' + LABEL[ver] + '</span></p>' +
       '<div class="frame-meta"><span class="m1"></span><span class="m2"></span></div>' +
       '<div class="frame-box"><iframe data-ver="' + ver + '" title="' + LABEL[ver] + ' preview"></iframe></div></div>';
   }
@@ -141,13 +163,14 @@
     const notes = state.page === "notes";
     $("#notes").hidden = !notes;
     stage.hidden = notes;
-    document.querySelectorAll("#mode-set input").forEach((i) => (i.disabled = state.page !== "product"));
+    document.querySelectorAll("#mode-set input, #sticky-set input").forEach((i) => (i.disabled = state.page !== "product"));
+    document.querySelectorAll("#cats-set input").forEach((i) => (i.disabled = state.page === "notes" || state.page === "system"));
     document.querySelectorAll("#size-set input, input[name=layout], input[name=ver]").forEach((i) => (i.disabled = notes));
     if (state.layout === "split") document.querySelectorAll("input[name=ver]").forEach((i) => (i.disabled = true));
     $("#open-actual").hidden = notes;
-    $("#open-actual").href = url(state.layout === "split" ? "v3" : state.ver, false);
+    $("#open-actual").href = url(state.layout === "split" ? "v4" : state.ver, false);
     if (!notes) {
-      const vers = state.layout === "split" ? ["v2", "v3"] : [state.ver];
+      const vers = state.layout === "split" ? ["v3", "v4"] : [state.ver];
       const key = vers.join(",");
       if (built !== key) { stage.innerHTML = vers.map(frameHTML).join(""); built = key; }
       stage.classList.toggle("is-split", vers.length > 1);
