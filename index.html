@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>HomeEaseEssentials — design preview comparison</title>
+<style>
+  :root { --bg: #EEEEEC; --panel: #FFFFFF; --ink: #1B1C1E; --ink-2: #55585C; --line: #D6D7D4; --sel: #1B1C1E; --focus: #2457C5; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { font: 14px/1.45 system-ui, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); display: flex; flex-direction: column; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .bar { background: var(--panel); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; }
+  .bar h1 { font-size: 15px; margin: 0; margin-right: auto; }
+  .bar h1 small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+  .controls { background: var(--panel); border-bottom: 1px solid var(--line); padding: 8px 16px 10px; display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: flex-end; }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  legend { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); margin-bottom: 4px; padding: 0; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
+  .seg label { position: relative; }
+  .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .seg span { display: block; padding: 7px 12px; min-height: 36px; line-height: 22px; cursor: pointer; border-left: 1px solid var(--line); white-space: nowrap; }
+  .seg label:first-child span { border-left: 0; }
+  .seg input:checked + span { background: var(--sel); color: #fff; }
+  .seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: -3px; }
+  .seg input:disabled + span { color: #A5A7A9; cursor: not-allowed; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .actions a, .actions button { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); text-decoration: none; font: inherit; cursor: pointer; }
+  .actions a:hover, .actions button:hover { border-color: var(--ink-2); }
+  .status { font-size: 12px; color: var(--ink-2); padding: 6px 16px; background: #FFF8E6; border-bottom: 1px solid #EBDDB5; }
+  .status b { color: #6B4E00; }
+  .stage { flex: 1; overflow: auto; padding: 16px; display: flex; justify-content: center; align-items: flex-start; }
+  .frame-wrap { position: relative; flex: none; }
+  .frame-meta { font-size: 12px; color: var(--ink-2); margin-bottom: 6px; display: flex; justify-content: space-between; gap: 12px; }
+  .frame-box { background: #fff; border-radius: 10px; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 10px 30px rgba(0,0,0,.08); overflow: hidden; }
+  .frame-box.is-phone { border-radius: 24px; box-shadow: 0 0 0 10px #1B1C1E, 0 14px 40px rgba(0,0,0,.2); margin: 10px; }
+  iframe { border: 0; display: block; transform-origin: 0 0; background: #fff; }
+  .notes { flex: 1; overflow: auto; padding: 24px 16px 60px; }
+  .notes article { max-width: 920px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 28px clamp(18px, 4vw, 40px); box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+  .notes h2 { font-size: 22px; margin: 0 0 6px; }
+  .notes h3 { font-size: 16px; margin: 28px 0 8px; }
+  .notes p, .notes li { color: #303235; }
+  .notes ul { padding-left: 20px; }
+  .notes table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+  .notes th, .notes td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line); }
+  .notes .two { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: #EEE; margin-right: 4px; }
+  [hidden] { display: none !important; }
+
+  .stage.is-split { gap: 16px; }
+  .vlabel { font-size: 12px; font-weight: 600; margin: 0 0 4px; }
+  .vlabel span { display: inline-block; padding: 2px 8px; border-radius: 99px; background: #1B1C1E; color: #fff; }
+  .vlabel span.prev { background: #7A5200; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; padding: 6px 16px; background: #fff; border-bottom: 1px solid var(--line); }
+  .links a { color: var(--ink); }
+</style>
+</head>
+<body>
+  <header class="bar">
+    <h1>HomeEaseEssentials — design preview comparison<small>Previous version (v2) and revised version (v3) · sample data only · not a live store · no platform, payment or service approved</small></h1>
+    <div class="actions">
+      <a id="open-actual" href="v3/a/index.html" target="_blank" rel="noopener">Open page at actual width ↗</a>
+      <button type="button" id="reset-cart">Reset sample carts</button>
+    </div>
+  </header>
+  <nav class="links" aria-label="Version links">
+    <span>Open a version on its own:</span>
+    <a href="v3/">Revised v3 (photos + typography)</a>
+    <a href="v2/">Previous v2</a>
+    <a href="v1/">First preview v1</a>
+  </nav>
+  <div class="controls" role="group" aria-label="Preview controls">
+    <fieldset><legend>Version</legend><div class="seg">
+      <label><input type="radio" name="ver" value="v1"><span>v1 first</span></label>
+      <label><input type="radio" name="ver" value="v2"><span>v2 previous</span></label>
+      <label><input type="radio" name="ver" value="v3" checked><span>v3 revised</span></label></div></fieldset>
+    <fieldset><legend>Layout</legend><div class="seg">
+      <label><input type="radio" name="layout" value="single" checked><span>Single</span></label>
+      <label><input type="radio" name="layout" value="split"><span>v2 vs v3 side by side</span></label></div></fieldset>
+    <fieldset><legend>Direction</legend><div class="seg">
+      <label><input type="radio" name="dir" value="a" checked><span>A · Warm Everyday</span></label>
+      <label><input type="radio" name="dir" value="b"><span>B · Clear &amp; Practical</span></label></div></fieldset>
+    <fieldset><legend>Page</legend><div class="seg">
+      <label><input type="radio" name="page" value="index" checked><span>Homepage</span></label>
+      <label><input type="radio" name="page" value="product"><span>Product detail</span></label>
+      <label><input type="radio" name="page" value="system"><span>Design system</span></label>
+      <label><input type="radio" name="page" value="notes"><span>What changed</span></label></div></fieldset>
+    <fieldset id="size-set"><legend>Preview size</legend><div class="seg">
+      <label><input type="radio" name="size" value="1440" checked><span>Desktop 1440</span></label>
+      <label><input type="radio" name="size" value="1024"><span>1024</span></label>
+      <label><input type="radio" name="size" value="768"><span>Tablet 768</span></label>
+      <label><input type="radio" name="size" value="390"><span>Mobile 390</span></label>
+      <label><input type="radio" name="size" value="360"><span>360</span></label></div></fieldset>
+    <fieldset id="mode-set"><legend>Product availability (preview control)</legend><div class="seg">
+      <label><input type="radio" name="mode" value="buy" checked><span>Ready to purchase</span></label>
+      <label><input type="radio" name="mode" value="enquire"><span>Needs confirmation</span></label></div></fieldset>
+  </div>
+  <p class="status"><b>Design preview only.</b> Sample products, prices and stock. v3 uses licensed stock photographs (Unsplash) as stand-ins for real product photos; v1 and v2 use drawn sample renders. WhatsApp actions show a message preview; checkout is outside this phase. Nothing is sent, charged or recorded.</p>
+
+  <main class="stage" id="stage"></main>
+
+  <section class="notes" id="notes" hidden tabindex="-1" aria-label="What changed">
+    <article>
+      <h2>What changed in v3 (revised) compared with v2 (previous)</h2>
+      <ul>
+        <li><b>Real photography:</b> drawn product renders replaced with licensed photographs (Unsplash License). The sample catalogue was rebuilt around the photos so each product's name, colour and visible features match what is shown. Gallery close-ups are crops of the same photograph, never a different product. Crops use a focal point per product so the item stays visible on phone and desktop.</li>
+        <li><b>Typography:</b> Red Hat Display for headings and prices, Red Hat Text for body copy and controls, Red Hat Mono for Direction B's specifications. Tighter heading spacing, consistent sizes on desktop and mobile, and lining tabular figures so PKR prices line up.</li>
+        <li><b>Catalogue changes (sample data):</b> 8 products matching available photos. The jewellery box is shown in one colour (Blush Pink) because both photos are of the same pink box; colour choice is demonstrated on the Cotton Bath Towel (White, Charcoal sold out), each colour shown as a crop of that towel.</li>
+        <li><b>Unchanged:</b> layouts, cart, WhatsApp previews, availability modes and the v2 product-page improvements.</li>
+      </ul>
+      <p>Photo credits: <a href="v3/shared/img/CREDITS.md" target="_blank" rel="noopener">v3/shared/img/CREDITS.md</a></p>
+    </article>
+  </section>
+
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const stage = $("#stage");
+  const LABEL = { v1: "v1 first", v2: "v2 previous", v3: "v3 revised" };
+  const HEIGHT = { 1440: 900, 1024: 768, 768: 1024, 390: 844, 360: 760 };
+  const state = { ver: "v3", layout: "single", dir: "a", page: "index", size: "1440", mode: "buy" };
+  try { Object.assign(state, JSON.parse(decodeURIComponent(location.hash.slice(1)) || "{}")); } catch (e) {}
+  if (!LABEL[state.ver]) state.ver = "v3";
+  document.querySelectorAll("input[type=radio]").forEach((i) => { if (state[i.name] === i.value) i.checked = true; });
+
+  function url(ver, framed) {
+    const q = new URLSearchParams();
+    if (state.page === "product" && state.mode === "enquire") q.set("mode", "enquire");
+    if (framed) q.set("frame", "1");
+    const s = q.toString();
+    return ver + "/" + state.dir + "/" + state.page + ".html" + (s ? "?" + s : "");
+  }
+  function frameHTML(ver) {
+    return '<div class="frame-wrap"><p class="vlabel"><span class="' + (ver === "v3" ? "" : "prev") + '">' + LABEL[ver] + '</span></p>' +
+      '<div class="frame-meta"><span class="m1"></span><span class="m2"></span></div>' +
+      '<div class="frame-box"><iframe data-ver="' + ver + '" title="' + LABEL[ver] + ' preview"></iframe></div></div>';
+  }
+  let built = "";
+  function render() {
+    const notes = state.page === "notes";
+    $("#notes").hidden = !notes;
+    stage.hidden = notes;
+    document.querySelectorAll("#mode-set input").forEach((i) => (i.disabled = state.page !== "product"));
+    document.querySelectorAll("#size-set input, input[name=layout], input[name=ver]").forEach((i) => (i.disabled = notes));
+    if (state.layout === "split") document.querySelectorAll("input[name=ver]").forEach((i) => (i.disabled = true));
+    $("#open-actual").hidden = notes;
+    $("#open-actual").href = url(state.layout === "split" ? "v3" : state.ver, false);
+    if (!notes) {
+      const vers = state.layout === "split" ? ["v2", "v3"] : [state.ver];
+      const key = vers.join(",");
+      if (built !== key) { stage.innerHTML = vers.map(frameHTML).join(""); built = key; }
+      stage.classList.toggle("is-split", vers.length > 1);
+      stage.querySelectorAll("iframe").forEach((f) => { const s = url(f.dataset.ver, true); if (f.getAttribute("src") !== s) f.setAttribute("src", s); });
+      layout();
+    }
+    try { history.replaceState(null, "", "#" + encodeURIComponent(JSON.stringify(state))); } catch (e) {}
+  }
+  function layout() {
+    const w = Number(state.size), h = HEIGHT[state.size];
+    const frames = stage.querySelectorAll(".frame-wrap");
+    const phone = w < 600;
+    const avail = (stage.clientWidth - 32 - (frames.length - 1) * 16) / frames.length - (phone ? 20 : 0);
+    const scale = Math.min(1, avail / w);
+    frames.forEach((fw) => {
+      const f = fw.querySelector("iframe"), box = fw.querySelector(".frame-box");
+      f.style.width = w + "px"; f.style.height = h + "px"; f.style.transform = "scale(" + scale + ")";
+      box.style.width = Math.round(w * scale) + "px"; box.style.height = Math.round(h * scale) + "px";
+      box.classList.toggle("is-phone", phone);
+      fw.querySelector(".m1").textContent = w + " × " + h + " viewport";
+      fw.querySelector(".m2").textContent = scale < 1 ? "shown at " + Math.round(scale * 100) + "%" : "actual size";
+    });
+  }
+  document.querySelector(".controls").addEventListener("change", (e) => { if (e.target.name) { state[e.target.name] = e.target.value; render(); } });
+  $("#reset-cart").addEventListener("click", () => {
+    ["a", "b"].forEach((d) => { try { localStorage.removeItem("he-preview-cart-" + d); } catch (e) {} });
+    stage.querySelectorAll("iframe").forEach((f) => { try { f.contentWindow.postMessage("he-reset-cart", "*"); } catch (e) {} });
+    $("#reset-cart").textContent = "Sample carts cleared";
+    setTimeout(() => ($("#reset-cart").textContent = "Reset sample carts"), 1600);
+  });
+  addEventListener("resize", () => state.page !== "notes" && layout());
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.sys { padding-block: 40px 80px; max-width: 1100px; }
+.sys-kicker { font: 600 12px/1.4 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.sys-h1 { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 40px; line-height: 1.1; margin-top: 8px; }
+.sys-lead { color: var(--ink-2); max-width: 70ch; margin-top: 12px; font-size: 17px; }
+.sys-h2 { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 24px; margin: 48px 0 16px; padding-top: 20px; border-top: 1px solid var(--line); }
+.sys-h3 { font-size: 16px; margin: 24px 0 10px; }
+.sys-note { color: var(--ink-2); font-size: 14.5px; max-width: 80ch; margin-top: 10px; }
+.sys code { font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: var(--ink-2); }
+.sys-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.sys-sw { display: grid; gap: 4px; font-size: 14px; }
+.sys-sw span { height: 64px; border-radius: var(--radius-m); box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+.sys-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.sys-table th, .sys-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.sys-pair { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 700; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.sys-type { display: grid; gap: 18px; }
+.sys-type > div { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; }
+@media (max-width: 700px) { .sys-type > div { grid-template-columns: 1fr; gap: 4px; } .sys-table { font-size: 12.5px; } }
+.sys-space { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; }
+.sys-space div { display: grid; gap: 6px; justify-items: center; }
+.sys-space span { background: var(--accent); display: block; border-radius: 2px; }
+.sys-row { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-bottom: 14px; }
+.sys-row--top { align-items: flex-start; gap: 28px; }
+.sys-focus { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sys-label, .sys-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.sys-field { width: min(320px, 100%); }
+.sys-field--error .input { border-color: var(--bad); }
+.sys-error { color: var(--bad); font-size: 13.5px; margin-top: 6px; }
+.sys-cards { max-width: 640px; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.sys-icons span { display: grid; justify-items: center; gap: 4px; width: 64px; }

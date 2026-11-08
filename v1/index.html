@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>HomeEaseEssentials — design direction comparison</title>
+<style>
+  :root { --bg: #EEEEEC; --panel: #FFFFFF; --ink: #1B1C1E; --ink-2: #55585C; --line: #D6D7D4; --sel: #1B1C1E; --focus: #2457C5; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { font: 14px/1.45 system-ui, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); display: flex; flex-direction: column; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .bar { background: var(--panel); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; }
+  .bar h1 { font-size: 15px; margin: 0; margin-right: auto; }
+  .bar h1 small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+  .controls { background: var(--panel); border-bottom: 1px solid var(--line); padding: 8px 16px 10px; display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: flex-end; }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  legend { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); margin-bottom: 4px; padding: 0; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
+  .seg label { position: relative; }
+  .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .seg span { display: block; padding: 7px 12px; min-height: 36px; line-height: 22px; cursor: pointer; border-left: 1px solid var(--line); white-space: nowrap; }
+  .seg label:first-child span { border-left: 0; }
+  .seg input:checked + span { background: var(--sel); color: #fff; }
+  .seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: -3px; }
+  .seg input:disabled + span { color: #A5A7A9; cursor: not-allowed; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .actions a, .actions button { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); text-decoration: none; font: inherit; cursor: pointer; }
+  .actions a:hover, .actions button:hover { border-color: var(--ink-2); }
+  .status { font-size: 12px; color: var(--ink-2); padding: 6px 16px; background: #FFF8E6; border-bottom: 1px solid #EBDDB5; }
+  .status b { color: #6B4E00; }
+  .stage { flex: 1; overflow: auto; padding: 16px; display: flex; justify-content: center; align-items: flex-start; }
+  .frame-wrap { position: relative; flex: none; }
+  .frame-meta { font-size: 12px; color: var(--ink-2); margin-bottom: 6px; display: flex; justify-content: space-between; gap: 12px; }
+  .frame-box { background: #fff; border-radius: 10px; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 10px 30px rgba(0,0,0,.08); overflow: hidden; }
+  .frame-box.is-phone { border-radius: 24px; box-shadow: 0 0 0 10px #1B1C1E, 0 14px 40px rgba(0,0,0,.2); margin: 10px; }
+  iframe { border: 0; display: block; transform-origin: 0 0; background: #fff; }
+  .notes { flex: 1; overflow: auto; padding: 24px 16px 60px; }
+  .notes article { max-width: 920px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 28px clamp(18px, 4vw, 40px); box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+  .notes h2 { font-size: 22px; margin: 0 0 6px; }
+  .notes h3 { font-size: 16px; margin: 28px 0 8px; }
+  .notes p, .notes li { color: #303235; }
+  .notes ul { padding-left: 20px; }
+  .notes table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 8px; }
+  .notes th, .notes td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--line); }
+  .notes .two { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: #EEE; margin-right: 4px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+  <header class="bar">
+    <h1>HomeEaseEssentials — visual direction comparison<small>Stage 1 design preview · sample data only · no platform, payment or service is approved</small></h1>
+    <div class="actions">
+      <a id="open-actual" href="a/index.html" target="_blank" rel="noopener">Open page at actual width ↗</a>
+      <button type="button" id="reset-cart">Reset sample cart</button>
+    </div>
+  </header>
+  <div class="controls" role="group" aria-label="Preview controls">
+    <fieldset><legend>Direction</legend><div class="seg">
+      <label><input type="radio" name="dir" value="a" checked><span>A · Warm Everyday</span></label>
+      <label><input type="radio" name="dir" value="b"><span>B · Clear &amp; Practical</span></label></div></fieldset>
+    <fieldset><legend>Page</legend><div class="seg">
+      <label><input type="radio" name="page" value="index" checked><span>Homepage</span></label>
+      <label><input type="radio" name="page" value="product"><span>Product detail</span></label>
+      <label><input type="radio" name="page" value="system"><span>Design system</span></label>
+      <label><input type="radio" name="page" value="notes"><span>Rationale &amp; notes</span></label></div></fieldset>
+    <fieldset id="size-set"><legend>Preview size</legend><div class="seg">
+      <label><input type="radio" name="size" value="1440" checked><span>Desktop 1440</span></label>
+      <label><input type="radio" name="size" value="1024"><span>1024</span></label>
+      <label><input type="radio" name="size" value="768"><span>Tablet 768</span></label>
+      <label><input type="radio" name="size" value="390"><span>Mobile 390</span></label>
+      <label><input type="radio" name="size" value="360"><span>360</span></label></div></fieldset>
+    <fieldset id="mode-set"><legend>Product availability (preview control)</legend><div class="seg">
+      <label><input type="radio" name="mode" value="buy" checked><span>Ready to purchase</span></label>
+      <label><input type="radio" name="mode" value="enquire"><span>Needs confirmation</span></label></div></fieldset>
+  </div>
+  <p class="status"><b>Preview only.</b> Products, prices and stock are sample data. Product images are generated sample renders, not photographs. WhatsApp actions show a message preview; checkout is outside this phase. Nothing is sent, charged or recorded.</p>
+
+  <main class="stage" id="stage">
+    <div class="frame-wrap" id="wrap">
+      <div class="frame-meta"><span id="meta"></span><span id="meta-scale"></span></div>
+      <div class="frame-box" id="box"><iframe id="frame" title="Storefront preview"></iframe></div>
+    </div>
+  </main>
+
+  <section class="notes" id="notes" hidden tabindex="-1" aria-label="Rationale and notes">
+    <article>
+      <h2>Rationale, tradeoffs and notes</h2>
+      <p>Both directions share the same sample catalogue, prices, descriptions, stock states, cart and WhatsApp behaviour (<code>shared/catalog.js</code>, <code>shared/core.js</code>). They differ in composition, typography, colour, density and a few interaction choices.</p>
+
+      <div class="two">
+        <section>
+          <h3>A · Warm Everyday</h3>
+          <p><span class="tag">Feel</span> Welcoming, homely, dependable.</p>
+          <ul>
+            <li><b>Composition:</b> editorial split hero with a three-product collage, so merchandise is visible immediately; airy four-column grid; tinted category band; an "in use" desk scene that links to the three products shown.</li>
+            <li><b>Type:</b> Fraunces (soft serif) for headings gives warmth; Figtree keeps prices, labels and controls plain and readable.</li>
+            <li><b>Colour:</b> warm cream base, terracotta reserved for primary actions, deep olive footer and top bar.</li>
+            <li><b>Purchase:</b> pill buttons, colour chips with text labels, add-to-cart opens the cart drawer. No sticky bar; buy controls sit in the flow.</li>
+            <li><b>Tradeoffs:</b> fewer products per screen; the serif and imagery carry more of the brand, so it depends more on good photography; more scrolling on mobile before the buy button (about 1.3 screens).</li>
+          </ul>
+        </section>
+        <section>
+          <h3>B · Clear &amp; Practical</h3>
+          <p><span class="tag">Feel</span> Organised, efficient, confident.</p>
+          <ul>
+            <li><b>Composition:</b> compact intro beside a category index, then a hairline catalogue grid; a mug-vs-tumbler comparison table as the practical section; numbered ordering steps.</li>
+            <li><b>Type:</b> one grotesk family for clarity; IBM Plex Mono only for specifications, SKUs and counts, which makes facts scannable.</li>
+            <li><b>Colour:</b> white and light grey, one deep teal accent for actions and focus.</li>
+            <li><b>Purchase:</b> price and stock on one line, add-to-cart button shows the line total, an "At a glance" spec table is always visible, add-to-cart confirms with a toast and a "View cart" link. A sticky buy bar appears on phones only after the main button scrolls away, and hides at the footer.</li>
+            <li><b>Tradeoffs:</b> less emotional warmth; can feel like a generic marketplace if photography is inconsistent; denser cards need careful copy (short names and spec lines).</li>
+          </ul>
+        </section>
+      </div>
+
+      <h3>Recommendation</h3>
+      <p><b>Direction A as the base, borrowing three elements from B.</b> HomeEaseEssentials sells affordable, chosen-for-you home items. A's warmth supports "carefully selected" better than a catalogue look, and it stays credible with a small range. From B, take: the always-visible "At a glance" spec table on the product page, the price-and-stock-on-one-line layout, and the phone-only sticky buy bar. B is the better choice if the catalogue grows past roughly 40–50 products or photography will be mostly plain supplier images.</p>
+
+      <h3>Sample data and asset provenance</h3>
+      <ul>
+        <li>All products, prices, stock, SKUs (prefixed <code>SAMPLE-</code>), dimensions and descriptions are invented for review, kept only in <code>shared/catalog.js</code>.</li>
+        <li><b>Product images are generated in code</b> (<code>shared/images.js</code>) as SVG renders. They are not photographs and are named "(sample render)" in their alternative text. No stock photos were downloaded, and no third-party images are used.</li>
+        <li><b>Effect on the review:</b> the renders show layout, cropping, colour variants and gallery behaviour accurately, but they look cleaner and more illustrative than real photos. Judge typography, layout and controls with confidence; judge "photography style" only as a direction (A: warm tabletop backdrop; B: neutral studio grey).</li>
+        <li>Fonts: Fraunces, Figtree, Schibsted Grotesk and IBM Plex Mono, all SIL Open Font License, loaded from Google Fonts. Without internet, system fallback fonts are used and the look changes.</li>
+        <li>Icons: a small outline set drawn for this preview.</li>
+      </ul>
+
+      <h3>What transfers to the eventual platform</h3>
+      <table>
+        <thead><tr><th>Element</th><th>Shopify (provisional)</th><th>WooCommerce (alternative)</th></tr></thead>
+        <tbody>
+          <tr><td>Design tokens, type, spacing, cards, header, footer, homepage sections</td><td>Transfers to a custom theme (Liquid + CSS)</td><td>Transfers to a theme (PHP templates + CSS)</td></tr>
+          <tr><td>Product gallery, variant chips, quantity, availability states</td><td>Transfers; variant data comes from Shopify</td><td>Transfers; variant data from WooCommerce</td></tr>
+          <tr><td>"Check availability on WhatsApp" mode</td><td>Product setting (metafield) + zero stock; needs dev-store testing</td><td>Custom field + template logic</td></tr>
+          <tr><td>Cart drawer</td><td>Transfers via the theme's cart API</td><td>Transfers with a mini-cart template</td></tr>
+          <tr><td>WhatsApp message preview</td><td>Becomes a real wa.me link once the number is confirmed</td><td>Same</td></tr>
+          <tr><td>Checkout</td><td><b>Not designed here.</b> On Basic only logo, colours and fonts can change; no custom fields</td><td>Fully customisable, but more upkeep</td></tr>
+          <tr><td>Sample renders, sample catalogue</td><td colspan="2">Do not transfer: replaced by real photos and the real catalogue</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Known limitations of this preview</h3>
+      <ul>
+        <li>Only the homepage and one product page (the jewellery tray) are designed. Other products open a quick-view panel instead of a full page.</li>
+        <li>No listing, search results page, checkout, account or admin. Checkout buttons explain that checkout is outside this phase.</li>
+        <li>Search is a live overlay over the 9 sample products, not a results page.</li>
+        <li>The cart is stored in the browser's local storage per direction, so A and B keep separate carts. It may not persist in private windows.</li>
+        <li>Delivery, returns, contact and policy content is marked provisional; business number, hours, email, courier and policies are TBC.</li>
+        <li>Lab checks only: no real-device testing, screen-reader testing or performance measurement has been done yet.</li>
+      </ul>
+    </article>
+  </section>
+
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const frame = $("#frame"), box = $("#box"), wrap = $("#wrap"), stage = $("#stage");
+  const HEIGHT = { 1440: 900, 1024: 768, 768: 1024, 390: 844, 360: 760 };
+  const state = { dir: "a", page: "index", size: "1440", mode: "buy" };
+  try { Object.assign(state, JSON.parse(decodeURIComponent(location.hash.slice(1)) || "{}")); } catch (e) {}
+  document.querySelectorAll("input[type=radio]").forEach((i) => { if (state[i.name] === i.value) i.checked = true; });
+
+  function url(framed) {
+    const q = new URLSearchParams();
+    if (state.page === "product" && state.mode === "enquire") q.set("mode", "enquire");
+    if (framed) q.set("frame", "1");
+    const s = q.toString();
+    return `${state.dir}/${state.page}.html${s ? "?" + s : ""}`;
+  }
+  function layout() {
+    const w = Number(state.size), h = HEIGHT[state.size];
+    const phone = w < 600;
+    const avail = stage.clientWidth - 32 - (phone ? 20 : 0);
+    const scale = Math.min(1, avail / w);
+    frame.style.width = w + "px";
+    frame.style.height = h + "px";
+    frame.style.transform = `scale(${scale})`;
+    box.style.width = Math.round(w * scale) + "px";
+    box.style.height = Math.round(h * scale) + "px";
+    box.classList.toggle("is-phone", phone);
+    $("#meta").textContent = `${w} × ${h} viewport`;
+    $("#meta-scale").textContent = scale < 1 ? `shown at ${Math.round(scale * 100)}%` : "actual size";
+  }
+  function render() {
+    const notes = state.page === "notes";
+    $("#notes").hidden = !notes;
+    stage.hidden = notes;
+    $("#mode-set").querySelectorAll("input").forEach((i) => (i.disabled = state.page !== "product"));
+    $("#size-set").querySelectorAll("input").forEach((i) => (i.disabled = notes));
+    $("#open-actual").hidden = notes;
+    $("#open-actual").href = url(false);
+    if (!notes) {
+      const src = url(true);
+      if (frame.getAttribute("src") !== src) frame.setAttribute("src", src);
+      frame.title = `Direction ${state.dir.toUpperCase()} — ${state.page === "index" ? "homepage" : state.page === "product" ? "product detail page" : "design system"} preview`;
+      layout();
+    }
+    try { history.replaceState(null, "", "#" + encodeURIComponent(JSON.stringify(state))); } catch (e) {}
+  }
+  document.querySelector(".controls").addEventListener("change", (e) => { if (e.target.name) { state[e.target.name] = e.target.value; render(); } });
+  $("#reset-cart").addEventListener("click", () => {
+    ["a", "b"].forEach((d) => { try { localStorage.removeItem("he-preview-cart-" + d); } catch (e) {} });
+    try { frame.contentWindow.postMessage("he-reset-cart", "*"); } catch (e) {}
+    $("#reset-cart").textContent = "Sample cart cleared";
+    setTimeout(() => ($("#reset-cart").textContent = "Reset sample cart"), 1600);
+  });
+  addEventListener("resize", () => state.page !== "notes" && layout());
+  render();
+})();
+</script>
+</body>
+</html>
