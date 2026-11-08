@@ -196,3 +196,9 @@ html:not(.is-framed) body { padding-bottom: 36px; }
   .pgrid > li:nth-child(n+7) { display: none; }
   .pdp .pgrid > li:nth-child(n+4) { display: none; }
 }
+
+/* phones: preview label sits at the end of the page instead of floating over content */
+@media (max-width: 599px) {
+  .preview-pill { position: static; display: block; width: max-content; margin: 16px; }
+  html:not(.is-framed) body { padding-bottom: 0; }
+}
